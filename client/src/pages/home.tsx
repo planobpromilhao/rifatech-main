@@ -81,7 +81,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center mb-12">
               <h2 className="md:text-4xl font-bold text-gray-800 mb-6 text-[26px]">
-                💛 Rifa Solidária: Com <span className="text-[#000000] font-extrabold">apenas R$1,00 (UM REAL)</span> você pode salvar o Dudu e ainda concorrer a <span className="text-secondary">um Onix 0KM</span> ou <span className="text-secondary">R$ 100.000,00</span> 💛
+                💛 Rifa Solidária: Com <span className="text-[#000000] font-extrabold">apenas R$1,00 (UM REAL)</span> você pode salvar o Dudu e ainda concorrer a <span className="font-extrabold text-[#000000]">um Onix 0KM</span> ou <span className="font-extrabold text-[#000000]">R$ 100.000,00</span> 💛
               </h2>
               
               <div className="bg-red-100 border border-red-300 rounded-lg p-6 mb-8">
