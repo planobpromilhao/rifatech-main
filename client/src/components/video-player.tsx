@@ -83,14 +83,14 @@ export function VideoPlayer() {
 
         {/* Barra de progresso personalizada */}
         {!showOverlay && (
-          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-4">
-            <div className="flex items-center space-x-4">
-              <span className="text-white text-sm font-medium min-w-[40px]">
+          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2">
+            <div className="flex items-center space-x-2">
+              <span className="text-white text-xs font-medium min-w-[35px]">
                 {formatTime(currentTime)}
               </span>
               
               <div 
-                className="flex-1 h-2 bg-gray-600 rounded-full cursor-pointer group"
+                className="flex-1 h-1 bg-gray-600 rounded-full cursor-pointer group"
                 onClick={handleProgressClick}
               >
                 <div 
@@ -99,7 +99,7 @@ export function VideoPlayer() {
                 />
               </div>
               
-              <span className="text-white text-sm font-medium min-w-[40px]">
+              <span className="text-white text-xs font-medium min-w-[35px]">
                 {formatTime(duration)}
               </span>
               
@@ -115,7 +115,7 @@ export function VideoPlayer() {
                 }}
                 className="text-white hover:text-blue-400 transition-colors"
               >
-                <i className="fas fa-play text-lg"></i>
+                <i className="fas fa-play text-sm"></i>
               </button>
             </div>
           </div>
