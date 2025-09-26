@@ -63,21 +63,20 @@ export function VideoPlayer() {
         
         {showOverlay && (
           <div 
-            className="video-overlay bg-black bg-opacity-65 rounded-xl border-4 border-white p-8 text-center cursor-pointer"
+            className="absolute inset-0 flex items-center justify-center cursor-pointer"
             onClick={handleOverlayClick}
             data-testid="video-overlay-click"
           >
-            <h3 className="text-white text-2xl md:text-4xl font-bold mb-4">
-              Seu vídeo já começou
-            </h3>
-            <div className="flex justify-center mb-4">
-              <div className="w-24 h-24 flex items-center justify-center">
-                <i className="fas fa-volume-up text-white text-4xl blink"></i>
+            <div className="bg-black bg-opacity-75 rounded-xl border-4 border-white p-8 text-center w-80 h-80 flex flex-col items-center justify-center">
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 flex items-center justify-center">
+                  <i className="fas fa-play text-white text-4xl"></i>
+                </div>
               </div>
+              <p className="text-white text-xl md:text-2xl font-bold">
+                Clique para começar o vídeo
+              </p>
             </div>
-            <p className="text-white text-2xl md:text-4xl font-bold">
-              Clique para ouvir
-            </p>
           </div>
         )}
 
