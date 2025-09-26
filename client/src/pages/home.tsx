@@ -43,27 +43,23 @@ export default function Home() {
       <main className="bg-white">
         
         {/* Urgent Message Section */}
-        <section className="py-12 bg-gradient-to-b from-red-50 to-white">
+        <section className="py-12 bg-white">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-red-600 mb-8 uppercase" data-testid="text-urgent-title">
-              ACONTECEU UM IMPREVISTO!
-            </h2>
-            <p className="text-xl md:text-2xl font-bold text-gray-800 mb-8 leading-relaxed">
-              E AGORA O DUDU TEM MENOS DE 30 DIAS PARA CONSEGUIR BATER A NOVA META.<br />
-              <span className="text-secondary">GANHE AGORA UM ONIX OU 100 MIL E AINDA AJUDE A SALVAR A VIDA DE DUDU.</span>
-            </p>
-            
-            <div className="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto mb-8">
-              <p className="text-lg text-gray-700 mb-6">
+            <div className="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto mb-8 border border-gray-200 relative">
+              <h2 className="text-2xl md:text-3xl font-bold text-black mb-4 uppercase leading-tight" data-testid="text-urgent-title">
+                ACONTECEU UM IMPREVISTO! E AGORA O DUDU TEM MENOS DE 30 DIAS PARA CONSEGUIR BATER A NOVA META.
+              </h2>
+              
+              <h3 className="text-xl md:text-2xl font-bold text-blue-600 mb-6 uppercase">
+                GANHE AGORA UM ONIX OU 100 MIL E AINDA AJUDE A SALVAR A VIDA DE DUDU.
+              </h3>
+              
+              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                 O Dudu conseguiu o dinheiro do remédio, <strong>porém foi avisado</strong> de última hora que vai precisar arcar com os custos hospitalares, que custam por volta de 6 milhões. <strong>Temos até o dia 20 de outubro para conseguirmos esses valores.</strong>
               </p>
-              <button 
-                onClick={scrollToPayment}
-                className="inline-block btn-green px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
-                data-testid="button-save-dudu-hero"
-              >
-                POR FAVOR SALVE O DUDU!
-              </button>
+              
+              {/* Linha verde na parte inferior */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-green-500"></div>
             </div>
 
             <img 
@@ -72,6 +68,16 @@ export default function Home() {
               className="mx-auto rounded-xl shadow-lg max-w-md w-full"
               data-testid="img-dudu-photo"
             />
+            
+            <div className="mt-8">
+              <button 
+                onClick={scrollToPayment}
+                className="inline-block btn-green px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
+                data-testid="button-save-dudu-hero"
+              >
+                POR FAVOR SALVE O DUDU!
+              </button>
+            </div>
           </div>
         </section>
 
