@@ -11,13 +11,13 @@
   --card-foreground: hsl(222.2 84% 4.9%);
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(222.2 84% 4.9%);
-  --primary: hsl(221 83% 53%);
+  --primary: hsl(130 100% 41%);
   --primary-foreground: hsl(210 40% 98%);
-  --secondary: hsl(45 93% 47%);
-  --secondary-foreground: hsl(222.2 84% 4.9%);
+  --secondary: hsl(130 100% 41%);
+  --secondary-foreground: hsl(210 40% 98%);
   --muted: hsl(210 40% 96%);
   --muted-foreground: hsl(215.4 16.3% 46.9%);
-  --accent: hsl(134 61% 41%);
+  --accent: hsl(130 100% 41%);
   --accent-foreground: hsl(210 40% 98%);
   --destructive: hsl(0 84.2% 60.2%);
   --destructive-foreground: hsl(210 40% 98%);
@@ -50,7 +50,7 @@
   --card-foreground: hsl(210 40% 98%);
   --popover: hsl(222.2 84% 4.9%);
   --popover-foreground: hsl(210 40% 98%);
-  --primary: hsl(221 83% 53%);
+  --primary: hsl(130 100% 41%);
   --primary-foreground: hsl(210 40% 98%);
   --secondary: hsl(217.2 32.6% 17.5%);
   --secondary-foreground: hsl(210 40% 98%);
@@ -90,7 +90,7 @@
 
 /* Custom animations for the charitable raffle page */
 .loading-bar {
-  background: linear-gradient(90deg, hsl(221 83% 53%) 0%, hsl(213 100% 60%) 100%);
+  background: linear-gradient(90deg, hsl(130 100% 41%) 0%, hsl(130 100% 45%) 100%);
   animation: loadingProgress 8s ease-in-out forwards;
 }
 
@@ -104,8 +104,8 @@
 }
 
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
-  50% { box-shadow: 0 0 30px rgba(37, 99, 235, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 209, 45, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(0, 209, 45, 0.6); }
 }
 
 .video-overlay {
@@ -127,7 +127,7 @@
 
 /* Rifa specific colors and styling */
 .rifa-primary {
-  color: hsl(221 83% 53%);
+  color: hsl(130 100% 41%);
 }
 
 .rifa-secondary {
@@ -135,9 +135,9 @@
 }
 
 .rifa-accent {
-  color: hsl(134 61% 41%);
+  color: hsl(130 100% 41%);
 }
 
 .rifa-gradient {
-  background: linear-gradient(90deg, hsl(221 83% 53%) 0%, hsl(45 93% 47%) 100%);
+  background: linear-gradient(90deg, hsl(130 100% 41%) 0%, hsl(130 100% 45%) 100%);
 }
