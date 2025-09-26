@@ -46,13 +46,11 @@ export default function Home() {
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 text-center">
             <div className="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto mb-8 border border-gray-200 relative">
-              <h2 className="text-2xl md:text-3xl artegra-font text-black mb-4 leading-tight" data-testid="text-urgent-title">
-                ACONTECEU UM IMPREVISTO! E AGORA O DUDU TEM MENOS DE 30 DIAS PARA CONSEGUIR BATER A NOVA META.
+              <h2 className="text-2xl md:text-3xl artegra-font leading-tight mb-6" data-testid="text-urgent-title">
+                <span className="text-black">ACONTECEU UM IMPREVISTO! E AGORA O DUDU TEM MENOS DE 30 DIAS PARA CONSEGUIR BATER A NOVA META.</span>
+                <br />
+                <span className="text-blue-600">GANHE AGORA UM ONIX OU 100 MIL E AINDA AJUDE A SALVAR A VIDA DE DUDU.</span>
               </h2>
-              
-              <h3 className="text-xl md:text-2xl font-bold text-blue-600 mb-6 uppercase">
-                GANHE AGORA UM ONIX OU 100 MIL E AINDA AJUDE A SALVAR A VIDA DE DUDU.
-              </h3>
               
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                 O Dudu conseguiu o dinheiro do remédio, <strong>porém foi avisado</strong> de última hora que vai precisar arcar com os custos hospitalares, que custam por volta de 6 milhões. <strong>Temos até o dia 20 de outubro para conseguirmos esses valores.</strong>
