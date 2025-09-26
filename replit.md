@@ -37,7 +37,16 @@ Preferred communication style: Simple, everyday language.
 ## External Dependencies
 - **Database Provider**: Neon Database (PostgreSQL serverless)
 - **UI Components**: Radix UI primitives via shadcn/ui
-- **Fonts**: Google Fonts (Architects Daughter, DM Sans, Fira Code, Geist Mono)
+- **Fonts**: Google Fonts (Architects Daughter, DM Sans, Fira Code, Geist Mono), Artegra Sans SC Bold Italic for specific titles
 - **Icons**: Font Awesome and Lucide React
 - **Development Tools**: Replit-specific plugins for error handling and debugging
 - **Build Tools**: esbuild for server bundling, PostCSS for CSS processing
+
+# Recent Changes
+
+- Complete frontend clone built with React/TypeScript including all UI components
+- Video player with interactive overlay ("Seu vídeo já começou / Clique para ouvir")
+- Progress bar displaying donation metrics (R$ 20.751.492,10 / R$ 24.000.000,00, 181.950 doadores)
+- Pricing cards for raffle tickets (R$ 30 to R$ 1.000) with checkout links
+- All CTA buttons styled with green color (#00D12D) as specified by user
+- Applied specific font "Artegra Sans SC Bold Italic" to main urgent message title using custom CSS class

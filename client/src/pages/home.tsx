@@ -46,7 +46,7 @@ export default function Home() {
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 text-center">
             <div className="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto mb-8 border border-gray-200 relative">
-              <h2 className="text-2xl md:text-3xl font-bold text-black mb-4 uppercase leading-tight" data-testid="text-urgent-title">
+              <h2 className="text-2xl md:text-3xl artegra-font text-black mb-4 leading-tight" data-testid="text-urgent-title">
                 ACONTECEU UM IMPREVISTO! E AGORA O DUDU TEM MENOS DE 30 DIAS PARA CONSEGUIR BATER A NOVA META.
               </h2>
               

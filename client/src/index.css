@@ -1,4 +1,5 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -152,4 +153,13 @@
 .btn-green:hover {
   background-color: #00B626 !important;
   border-color: #00B626 !important;
+}
+
+/* Fonte Artegra Sans SC Bold Italic (usando Oswald como alternativa) */
+.artegra-font {
+  font-family: 'Artegra Sans SC', 'Oswald', 'Arial Black', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
