@@ -48,7 +48,7 @@ export function VideoPlayer() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto mb-8 relative">
+    <div className="max-w-2xl mx-auto mb-8 relative">
       <div className="aspect-video bg-black rounded-lg overflow-hidden relative">
         <video 
           ref={videoRef}
