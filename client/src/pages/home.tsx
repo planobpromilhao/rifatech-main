@@ -47,9 +47,9 @@ export default function Home() {
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-4xl mx-auto mb-8">
               <h2 className="text-2xl md:text-3xl artegra-font leading-tight mb-6" data-testid="text-urgent-title">
-                <span className="text-black">ACONTECEU UM IMPREVISTO! E AGORA O DUDU TEM MENOS DE 30 DIAS PARA CONSEGUIR BATER A NOVA META.</span>
+                <span className="text-black"><span style={{color: '#056ADF'}}>ACONTECEU UM IMPREVISTO!</span> E AGORA O DUDU TEM MENOS DE 30 DIAS PARA CONSEGUIR BATER A NOVA META.</span>
                 <br />
-                <span className="text-blue-600">GANHE AGORA UM ONIX OU 100 MIL E AINDA AJUDE A SALVAR A VIDA DE DUDU.</span>
+                <span className="text-[#056ADF]">GANHE AGORA UM ONIX OU 100 MIL E AINDA AJUDE A SALVAR A VIDA DE DUDU.</span>
               </h2>
               
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
