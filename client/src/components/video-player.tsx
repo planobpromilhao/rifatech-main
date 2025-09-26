@@ -1,22 +1,27 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import videoFile from "@assets/Dudu Juntos pela Helena_1758924211856.mp4";
 
 export function VideoPlayer() {
   const [showOverlay, setShowOverlay] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleOverlayClick = () => {
     setShowOverlay(false);
-    // In a real implementation, this would start the video
-    console.log('Video interaction - would start actual video playback here');
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
   };
 
   return (
     <div className="max-w-4xl mx-auto mb-8 relative">
       <div className="aspect-video bg-black rounded-lg overflow-hidden relative">
-        <img 
-          src="https://images.converteai.net/5628caef-e8a9-4caf-a362-0ca479569e53/players/68d4a39b3776360127869bdb/thumbnail.jpg" 
-          alt="Video do Dudu" 
+        <video 
+          ref={videoRef}
+          src={videoFile}
           className="w-full h-full object-cover"
-          data-testid="video-thumbnail"
+          controls={!showOverlay}
+          preload="metadata"
+          data-testid="video-player"
         />
         
         {showOverlay && (
