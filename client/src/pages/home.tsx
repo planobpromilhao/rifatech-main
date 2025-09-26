@@ -45,7 +45,7 @@ export default function Home() {
         {/* Urgent Message Section */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 text-center">
-            <div className="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto mb-8 border border-gray-200 relative">
+            <div className="max-w-4xl mx-auto mb-8">
               <h2 className="text-2xl md:text-3xl artegra-font leading-tight mb-6" data-testid="text-urgent-title">
                 <span className="text-black">ACONTECEU UM IMPREVISTO! E AGORA O DUDU TEM MENOS DE 30 DIAS PARA CONSEGUIR BATER A NOVA META.</span>
                 <br />
@@ -55,9 +55,6 @@ export default function Home() {
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                 O Dudu conseguiu o dinheiro do remédio, <strong>porém foi avisado</strong> de última hora que vai precisar arcar com os custos hospitalares, que custam por volta de 6 milhões. <strong>Temos até o dia 20 de outubro para conseguirmos esses valores.</strong>
               </p>
-              
-              {/* Linha verde na parte inferior */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-green-500"></div>
             </div>
 
             <img 
