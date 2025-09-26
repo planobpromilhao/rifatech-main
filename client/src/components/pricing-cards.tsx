@@ -81,11 +81,7 @@ export function PricingCards() {
       ? "bg-white rounded-xl shadow-lg p-6 text-center border-2 border-accent hover:border-accent transition-all"
       : "bg-white rounded-xl shadow-lg p-6 text-center border-2 border-transparent hover:border-primary transition-all";
 
-    const buttonClasses = option.isPopular
-      ? "block bg-secondary hover:bg-secondary/90 text-secondary-foreground px-4 py-3 rounded-lg font-bold transition-all pulse-glow"
-      : option.price === 1000
-      ? "block bg-accent hover:bg-accent/90 text-accent-foreground px-4 py-3 rounded-lg font-bold transition-all"
-      : "block bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-3 rounded-lg font-bold transition-all";
+    const buttonClasses = "block btn-green px-4 py-3 rounded-lg font-bold transition-all";
 
     return (
       <div className={cardClasses}>

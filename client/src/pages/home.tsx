@@ -59,7 +59,7 @@ export default function Home() {
               </p>
               <button 
                 onClick={scrollToPayment}
-                className="inline-block bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
+                className="inline-block btn-green px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
                 data-testid="button-save-dudu-hero"
               >
                 POR FAVOR SALVE O DUDU!
@@ -110,7 +110,7 @@ export default function Home() {
               <div className="text-center mt-8">
                 <button 
                   onClick={scrollToPayment}
-                  className="inline-block bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
+                  className="inline-block btn-green px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
                   data-testid="button-save-dudu-description"
                 >
                   POR FAVOR SALVE O DUDU!
@@ -138,7 +138,7 @@ export default function Home() {
                 <div className="text-center">
                   <button 
                     onClick={scrollToPayment}
-                    className="inline-block bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
+                    className="inline-block btn-green px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
                     data-testid="button-save-dudu-urgency"
                   >
                     POR FAVOR SALVE O DUDU!
@@ -211,7 +211,7 @@ export default function Home() {
               <div className="text-center">
                 <button 
                   onClick={scrollToPayment}
-                  className="inline-block bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
+                  className="inline-block btn-green px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
                   data-testid="button-help-helena"
                 >
                   POR FAVOR AJUDE A HELENA!
@@ -246,7 +246,7 @@ export default function Home() {
 
                 <button 
                   onClick={scrollToPayment}
-                  className="inline-block bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
+                  className="inline-block btn-green px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
                   data-testid="button-save-dudu-trust"
                 >
                   POR FAVOR SALVE O DUDU!
@@ -284,7 +284,7 @@ export default function Home() {
               <div className="text-center mt-12">
                 <button 
                   onClick={scrollToPayment}
-                  className="inline-block bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
+                  className="inline-block btn-green px-8 py-4 rounded-lg text-xl font-bold transition-all pulse-glow"
                   data-testid="button-help-helena-faq"
                 >
                   POR FAVOR AJUDE A HELENA!
