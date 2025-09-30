@@ -76,7 +76,7 @@ export function PricingCards() {
 
   const PricingCard = ({ option, isLarge = false }: { option: PricingOption, isLarge?: boolean }) => {
     const cardClasses = option.isPopular 
-      ? "bg-white rounded-xl shadow-xl p-6 text-center border-4 border-secondary relative transform scale-105"
+      ? "bg-white rounded-xl shadow-xl p-6 text-center border-4 border-secondary relative"
       : option.price === 1000
       ? "bg-white rounded-xl shadow-lg p-6 text-center border-2 border-accent hover:border-accent transition-all"
       : "bg-white rounded-xl shadow-lg p-6 text-center border-2 border-transparent hover:border-primary transition-all";
