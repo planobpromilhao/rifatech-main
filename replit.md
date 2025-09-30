@@ -58,6 +58,7 @@ Preferred communication style: Simple, everyday language.
   - Complete transaction flow: checkout → PIX generation → payment display
   - Handles API errors gracefully with user-friendly Portuguese messages
   - Validates CPF using HyperCash's Brazilian algorithm
+  - QR code generation: HyperCash returns PIX code as text, system generates scannable QR code image using qrcode library
   - Accepts responses with either QR code or copy-paste code
   - End-to-end tested: form submission → API call → QR code display working correctly
 - Complete frontend clone built with React/TypeScript including all UI components

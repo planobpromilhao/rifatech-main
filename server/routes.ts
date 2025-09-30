@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertDonationSchema, insertCampaignSchema, checkoutSchema } from "@shared/schema";
 import { hyperCashService } from "./hypercash";
+import QRCode from "qrcode";
 
 // Seed the database with the Dudu campaign
 async function seedDatabase() {
@@ -109,16 +110,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
           });
         }
         
-        // Format QR code with data URI prefix if needed
-        let qrCodeData = pixResponse.data.pix.qrcode || '';
-        if (qrCodeData && !qrCodeData.startsWith('data:')) {
-          qrCodeData = `data:image/png;base64,${qrCodeData}`;
+        // The HyperCash API returns the PIX code as text, not as an image
+        // We need to generate the QR code image from the PIX code
+        const pixCode = pixResponse.data.pix.qrcode || pixResponse.data.pix.url || '';
+        
+        // Generate QR code image as base64
+        let qrCodeData = '';
+        if (pixCode) {
+          try {
+            qrCodeData = await QRCode.toDataURL(pixCode, {
+              errorCorrectionLevel: 'M',
+              type: 'image/png',
+              width: 400,
+              margin: 2
+            });
+          } catch (qrError) {
+            console.error('Error generating QR code:', qrError);
+          }
         }
         
         // Update donation with PIX info from HyperCash response
         await storage.updateDonationPix(donation.id, {
           pixQrCode: qrCodeData,
-          pixCopyPaste: pixResponse.data.pix.url || pixResponse.data.pix.qrcode || '',
+          pixCopyPaste: pixCode, // The PIX code for copy-paste
           pixExpiresAt: pixResponse.data.pix.expirationDate ? new Date(pixResponse.data.pix.expirationDate) : new Date(Date.now() + 24 * 60 * 60 * 1000),
           paymentId: pixResponse.data.id
         });
