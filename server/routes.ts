@@ -101,8 +101,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
           checkoutData.donorCpf
         );
         
-        // Verify PIX data was generated
-        if (!pixResponse.data.pix.qrcode || !pixResponse.data.pix.url) {
+        // Verify PIX data was generated (need at least qrcode OR url)
+        if (!pixResponse.data?.pix?.qrcode && !pixResponse.data?.pix?.url) {
           console.error('HyperCash did not return PIX data:', pixResponse);
           return res.status(500).json({ 
             error: 'Não foi possível gerar o PIX. Por favor, tente novamente.' 
@@ -111,8 +111,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         
         // Update donation with PIX info from HyperCash response
         await storage.updateDonationPix(donation.id, {
-          pixQrCode: pixResponse.data.pix.qrcode,
-          pixCopyPaste: pixResponse.data.pix.url,
+          pixQrCode: pixResponse.data.pix.qrcode || '',
+          pixCopyPaste: pixResponse.data.pix.url || pixResponse.data.pix.qrcode || '',
           pixExpiresAt: pixResponse.data.pix.expirationDate ? new Date(pixResponse.data.pix.expirationDate) : new Date(Date.now() + 24 * 60 * 60 * 1000),
           paymentId: pixResponse.data.id
         });

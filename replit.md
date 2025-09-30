@@ -52,7 +52,14 @@ Preferred communication style: Simple, everyday language.
   - Enhanced visual hierarchy with larger fonts and better spacing
   - Improved form styling with security badges and clear instructions
   - Payment page now features prominent QR code display with branded borders
-- **HyperCash PIX Integration**: API key configured and system ready for live payments
+- **HyperCash PIX Integration**: Fully implemented and tested
+  - Configured HyperCash API with Basic Auth (x:API_KEY format)
+  - Automatic data cleaning: removes formatting from CPF and phone before API submission
+  - Complete transaction flow: checkout → PIX generation → payment display
+  - Handles API errors gracefully with user-friendly Portuguese messages
+  - Validates CPF using HyperCash's Brazilian algorithm
+  - Accepts responses with either QR code or copy-paste code
+  - End-to-end tested: form submission → API call → QR code display working correctly
 - Complete frontend clone built with React/TypeScript including all UI components
 - Video player with interactive overlay ("Seu vídeo já começou / Clique para ouvir")
 - Progress bar displaying donation metrics (R$ 20.751.492,10 / R$ 24.000.000,00, 181.950 doadores)
