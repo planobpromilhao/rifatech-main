@@ -1,15 +1,41 @@
-interface HyperCashPixCharge {
-  value: number;
-  correlationID: string;
-  comment?: string;
+interface HyperCashCreateTransactionRequest {
+  amount: number;
+  currency?: string;
+  paymentMethod: "PIX";
+  customer: {
+    name: string;
+    email: string;
+    phone?: string;
+    document: {
+      type: "CPF";
+      number: string;
+    };
+  };
+  items: Array<{
+    title: string;
+    unitPrice: number;
+    quantity: number;
+    tangible: boolean;
+  }>;
+  pix: {
+    expiresInDays: number;
+  };
+  postbackUrl?: string;
+  metadata?: string;
+  ip?: string;
 }
 
 interface HyperCashPixResponse {
-  status: string;
-  brcode: string;
-  qrcode: string;
-  transactionId: string;
-  expiresAt: string;
+  data: {
+    id: string;
+    amount: number;
+    status: string;
+    pix: {
+      qrcode: string | null;
+      url: string | null;
+      expirationDate: string | null;
+    };
+  };
 }
 
 export class HyperCashService {
@@ -24,15 +50,54 @@ export class HyperCashService {
     }
   }
 
-  async createPixCharge(amount: number, donationId: string, donorName: string): Promise<HyperCashPixResponse> {
+  private getAuthHeader(): string {
+    const credentials = `x:${this.apiKey}`;
+    return `Basic ${Buffer.from(credentials).toString("base64")}`;
+  }
+
+  async createPixCharge(
+    amount: number, 
+    donationId: string, 
+    donorName: string,
+    donorEmail: string,
+    donorPhone: string,
+    donorCpf: string
+  ): Promise<HyperCashPixResponse> {
     if (!this.apiKey) {
       throw new Error("HyperCash API key not configured");
     }
 
-    const charge: HyperCashPixCharge = {
-      value: amount,
-      correlationID: donationId,
-      comment: `Doação para Dudu - ${donorName}`,
+    const amountInCents = Math.round(amount * 100);
+    
+    // Remove formatting from CPF and phone (keep only numbers)
+    const cleanCpf = donorCpf.replace(/\D/g, '');
+    const cleanPhone = donorPhone.replace(/\D/g, '');
+
+    const payload: HyperCashCreateTransactionRequest = {
+      amount: amountInCents,
+      currency: "BRL",
+      paymentMethod: "PIX",
+      customer: {
+        name: donorName,
+        email: donorEmail,
+        phone: cleanPhone,
+        document: {
+          type: "CPF",
+          number: cleanCpf,
+        },
+      },
+      items: [
+        {
+          title: "Doação para Dudu - Rifa Solidária",
+          unitPrice: amountInCents,
+          quantity: 1,
+          tangible: false,
+        },
+      ],
+      pix: {
+        expiresInDays: 1,
+      },
+      metadata: JSON.stringify({ donationId }),
     };
 
     try {
@@ -40,9 +105,9 @@ export class HyperCashService {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${this.apiKey}`,
+          "Authorization": this.getAuthHeader(),
         },
-        body: JSON.stringify(charge),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
@@ -50,7 +115,7 @@ export class HyperCashService {
         throw new Error(`HyperCash API error: ${response.status} - ${errorData}`);
       }
 
-      const data = await response.json();
+      const data: HyperCashPixResponse = await response.json();
       return data;
     } catch (error) {
       console.error("Error creating PIX charge:", error);
@@ -67,7 +132,7 @@ export class HyperCashService {
       const response = await fetch(`${this.baseUrl}/transactions/${transactionId}`, {
         method: "GET",
         headers: {
-          "Authorization": `Bearer ${this.apiKey}`,
+          "Authorization": this.getAuthHeader(),
         },
       });
 
@@ -75,10 +140,10 @@ export class HyperCashService {
         throw new Error(`HyperCash API error: ${response.status}`);
       }
 
-      const data = await response.json();
+      const data: HyperCashPixResponse = await response.json();
       return {
-        status: data.status,
-        paid: data.status === "approved" || data.status === "paid",
+        status: data.data.status,
+        paid: data.data.status === "PAID" || data.data.status === "paid",
       };
     } catch (error) {
       console.error("Error checking payment status:", error);

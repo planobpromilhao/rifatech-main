@@ -92,18 +92,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Create PIX charge with HyperCash
       try {
-        const pixCharge = await hyperCashService.createPixCharge(
+        const pixResponse = await hyperCashService.createPixCharge(
           amount,
           donation.id,
-          checkoutData.donorName
+          checkoutData.donorName,
+          checkoutData.donorEmail,
+          checkoutData.donorPhone,
+          checkoutData.donorCpf
         );
         
-        // Update donation with PIX info
+        // Verify PIX data was generated
+        if (!pixResponse.data.pix.qrcode || !pixResponse.data.pix.url) {
+          console.error('HyperCash did not return PIX data:', pixResponse);
+          return res.status(500).json({ 
+            error: 'Não foi possível gerar o PIX. Por favor, tente novamente.' 
+          });
+        }
+        
+        // Update donation with PIX info from HyperCash response
         await storage.updateDonationPix(donation.id, {
-          pixQrCode: pixCharge.qrcode,
-          pixCopyPaste: pixCharge.brcode,
-          pixExpiresAt: new Date(pixCharge.expiresAt),
-          paymentId: pixCharge.transactionId
+          pixQrCode: pixResponse.data.pix.qrcode,
+          pixCopyPaste: pixResponse.data.pix.url,
+          pixExpiresAt: pixResponse.data.pix.expirationDate ? new Date(pixResponse.data.pix.expirationDate) : new Date(Date.now() + 24 * 60 * 60 * 1000),
+          paymentId: pixResponse.data.id
         });
         
         // Return updated donation
@@ -111,8 +122,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         res.json(updatedDonation);
       } catch (pixError) {
         console.error('Error creating PIX charge:', pixError);
-        // Return donation without PIX info if HyperCash fails
-        res.json(donation);
+        return res.status(500).json({ 
+          error: 'Erro ao criar pagamento PIX. Por favor, tente novamente.' 
+        });
       }
     } catch (error) {
       console.error('Error creating donation:', error);
