@@ -30,10 +30,15 @@ export const donations = pgTable("donations", {
   campaignId: varchar("campaign_id").notNull().references(() => campaigns.id),
   donorName: text("donor_name"),
   donorEmail: text("donor_email"),
+  donorPhone: text("donor_phone"),
+  donorCpf: text("donor_cpf"),
   amount: decimal("amount", { precision: 10, scale: 2 }).notNull(),
   numberOfTickets: integer("number_of_tickets").notNull(),
-  paymentStatus: text("payment_status").notNull().default("pending"), // pending, completed, failed
+  paymentStatus: text("payment_status").notNull().default("pending"), // pending, completed, failed, approved
   paymentId: text("payment_id"), // External payment processor ID
+  pixQrCode: text("pix_qr_code"), // PIX QR Code
+  pixCopyPaste: text("pix_copy_paste"), // PIX Copy and Paste code
+  pixExpiresAt: timestamp("pix_expires_at"), // PIX expiration time
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
@@ -93,6 +98,15 @@ export const insertDonationSchema = createInsertSchema(donations).omit({
   updatedAt: true,
 });
 
+export const checkoutSchema = z.object({
+  donorName: z.string().min(3, "Nome deve ter no mínimo 3 caracteres"),
+  donorEmail: z.string().email("Email inválido"),
+  donorPhone: z.string().min(10, "Telefone deve ter no mínimo 10 dígitos"),
+  donorCpf: z.string().min(11, "CPF deve ter 11 dígitos").max(14),
+  amount: z.string(),
+  numberOfTickets: z.number().int().positive(),
+});
+
 export const insertRaffleNumberSchema = createInsertSchema(raffleNumbers).omit({
   id: true,
   createdAt: true,
@@ -105,5 +119,6 @@ export type Campaign = typeof campaigns.$inferSelect;
 export type InsertCampaign = z.infer<typeof insertCampaignSchema>;
 export type Donation = typeof donations.$inferSelect;
 export type InsertDonation = z.infer<typeof insertDonationSchema>;
+export type CheckoutData = z.infer<typeof checkoutSchema>;
 export type RaffleNumber = typeof raffleNumbers.$inferSelect;
 export type InsertRaffleNumber = z.infer<typeof insertRaffleNumberSchema>;

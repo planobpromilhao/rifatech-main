@@ -1,43 +1,41 @@
+import { useLocation } from "wouter";
+
 interface PricingOption {
   price: number;
   numbers: number;
   pricePerNumber: number;
   isPopular?: boolean;
-  link: string;
 }
 
 export function PricingCards() {
+  const [, navigate] = useLocation();
+  
   const pricingOptions: PricingOption[] = [
     {
       price: 30,
       numbers: 3,
       pricePerNumber: 10.00,
-      link: "https://checkout.rifeioficial.com/meABG9znD4g6Ea2?sub1=68d6ebc661c87&utm_source=organic"
     },
     {
       price: 38,
       numbers: 4,
       pricePerNumber: 9.50,
-      link: "https://checkout.rifeioficial.com/NDr8gmkndJZBmjd?sub1=68d6ebc661c87&utm_source=organic"
     },
     {
       price: 45,
       numbers: 5,
       pricePerNumber: 9.00,
-      link: "https://checkout.rifeioficial.com/65XDZBVJQeZVJwL?sub1=68d6ebc661c87&utm_source=organic"
     },
     {
       price: 75,
       numbers: 10,
       pricePerNumber: 7.50,
       isPopular: true,
-      link: "https://checkout.rifeioficial.com/n1NLgwjMxOGMxE7?sub1=68d6ebc661c87&utm_source=organic"
     },
     {
       price: 100,
       numbers: 20,
       pricePerNumber: 5.00,
-      link: "https://checkout.rifeioficial.com/N1nVZplboWZlM6B?sub1=68d6ebc661c87&utm_source=organic"
     }
   ];
 
@@ -46,31 +44,26 @@ export function PricingCards() {
       price: 135,
       numbers: 30,
       pricePerNumber: 4.50,
-      link: "https://checkout.rifeioficial.com/kYL6gej4Xp3rKM0?sub1=68d6ebc661c87&utm_source=organic"
     },
     {
       price: 200,
       numbers: 50,
       pricePerNumber: 4.00,
-      link: "https://checkout.rifeioficial.com/xQBPZv59XL3mVqy?sub1=68d6ebc661c87&utm_source=organic"
     },
     {
       price: 300,
       numbers: 100,
       pricePerNumber: 3.00,
-      link: "https://checkout.rifeioficial.com/DPXw3XMENMZzmpq?sub1=68d6ebc661c87&utm_source=organic"
     },
     {
       price: 500,
       numbers: 250,
       pricePerNumber: 2.00,
-      link: "https://checkout.rifeioficial.com/eApQgz1MzVGEb76?sub1=68d6ebc661c87&utm_source=organic"
     },
     {
       price: 1000,
       numbers: 1000,
       pricePerNumber: 1.00,
-      link: "https://checkout.rifeioficial.com/mwK436O1l4ZQ8bx?sub1=68d6ebc661c87&utm_source=organic"
     }
   ];
 
@@ -99,13 +92,13 @@ export function PricingCards() {
         <div className={`${isLarge ? 'text-sm' : 'text-sm'} text-gray-600 mb-4`}>
           R$ {option.pricePerNumber.toFixed(2)} por número
         </div>
-        <a 
-          href={option.link}
+        <button 
+          onClick={() => navigate(`/checkout?price=${option.price}&numbers=${option.numbers}`)}
           className={isLarge ? buttonClasses.replace('py-3', 'py-2').replace('text-xl', 'text-sm') : buttonClasses}
           data-testid={`button-purchase-${option.price}`}
         >
           Ajudar agora
-        </a>
+        </button>
       </div>
     );
   };
