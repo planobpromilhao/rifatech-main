@@ -119,17 +119,13 @@ export function PricingCards() {
           </h2>
         </div>
 
-        {/* Main pricing options */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+        {/* Todas as opções em duas fileiras */}
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {pricingOptions.map((option) => (
             <PricingCard key={option.price} option={option} />
           ))}
-        </div>
-
-        {/* Additional pricing tiers */}
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {additionalOptions.map((option) => (
-            <PricingCard key={option.price} option={option} isLarge />
+            <PricingCard key={option.price} option={option} />
           ))}
         </div>
       </div>
