@@ -109,9 +109,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
           });
         }
         
+        // Format QR code with data URI prefix if needed
+        let qrCodeData = pixResponse.data.pix.qrcode || '';
+        if (qrCodeData && !qrCodeData.startsWith('data:')) {
+          qrCodeData = `data:image/png;base64,${qrCodeData}`;
+        }
+        
         // Update donation with PIX info from HyperCash response
         await storage.updateDonationPix(donation.id, {
-          pixQrCode: pixResponse.data.pix.qrcode || '',
+          pixQrCode: qrCodeData,
           pixCopyPaste: pixResponse.data.pix.url || pixResponse.data.pix.qrcode || '',
           pixExpiresAt: pixResponse.data.pix.expirationDate ? new Date(pixResponse.data.pix.expirationDate) : new Date(Date.now() + 24 * 60 * 60 * 1000),
           paymentId: pixResponse.data.id
