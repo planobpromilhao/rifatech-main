@@ -44,6 +44,15 @@ Preferred communication style: Simple, everyday language.
 
 # Recent Changes
 
+## September 30, 2025
+- **Design Improvements**: Checkout and payment pages redesigned to match main site styling
+  - Added consistent header with logo across all pages (home, checkout, payment)
+  - Applied brand colors (#056ADF for accents, #00D12D for CTAs)
+  - Unified footer with "Políticas de Privacidade" across all pages
+  - Enhanced visual hierarchy with larger fonts and better spacing
+  - Improved form styling with security badges and clear instructions
+  - Payment page now features prominent QR code display with branded borders
+- **HyperCash PIX Integration**: API key configured and system ready for live payments
 - Complete frontend clone built with React/TypeScript including all UI components
 - Video player with interactive overlay ("Seu vídeo já começou / Clique para ouvir")
 - Progress bar displaying donation metrics (R$ 20.751.492,10 / R$ 24.000.000,00, 181.950 doadores)
