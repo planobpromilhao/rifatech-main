@@ -17,12 +17,15 @@ export default function PaymentPage() {
   });
 
   useEffect(() => {
-    if (!donation?.pixExpiresAt) return;
+    if (!donation) return;
+
+    // Always start with 10 minutes (600 seconds)
+    const startTime = new Date().getTime();
+    const expiryTime = startTime + (10 * 60 * 1000); // 10 minutes
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
-      const expires = new Date(donation.pixExpiresAt!).getTime();
-      const diff = expires - now;
+      const diff = expiryTime - now;
 
       if (diff <= 0) {
         setTimeRemaining("Expirado");
@@ -36,7 +39,7 @@ export default function PaymentPage() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [donation?.pixExpiresAt]);
+  }, [donation]);
 
   useEffect(() => {
     if (donation?.paymentStatus === "approved") {
