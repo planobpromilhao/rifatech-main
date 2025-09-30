@@ -79,133 +79,192 @@ export default function PaymentPage() {
 
   if (donation.paymentStatus === "approved") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-50 to-white">
-        <div className="text-center max-w-2xl mx-auto px-4">
-          <div className="mb-8">
-            <div className="mx-auto w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mb-4">
-              <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">
-              Pagamento Confirmado! 🎉
-            </h1>
-            <p className="text-xl text-gray-700 mb-6">
-              Obrigado por ajudar o Dudu! Seu pagamento foi confirmado com sucesso.
-            </p>
-            <p className="text-lg text-gray-600">
-              Você receberá um email com os detalhes da sua contribuição e os números da rifa.
-            </p>
+      <div className="bg-background text-foreground min-h-screen">
+        {/* Header */}
+        <header className="bg-white shadow-sm py-4">
+          <div className="container mx-auto px-4 flex justify-center">
+            <img 
+              src="https://rifeioficial.com/wp-content/uploads/2025/09/Logo-4.png" 
+              alt="Rifa Oficial Logo" 
+              className="h-12"
+              data-testid="img-logo-success"
+            />
           </div>
-          <Button onClick={() => navigate("/")} className="btn-green text-xl px-8 py-6">
-            Voltar para início
-          </Button>
-        </div>
+        </header>
+
+        <main className="flex items-center justify-center py-20 bg-white min-h-[80vh]">
+          <div className="text-center max-w-2xl mx-auto px-4">
+            <div className="mb-8">
+              <div className="mx-auto w-24 h-24 bg-[#00D12D] rounded-full flex items-center justify-center mb-6 shadow-lg">
+                <svg className="w-14 h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                Pagamento Confirmado! 🎉
+              </h1>
+              <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-6">
+                <p className="text-xl text-gray-800 font-semibold mb-3">
+                  Obrigado por ajudar o Dudu!
+                </p>
+                <p className="text-lg text-gray-700">
+                  Seu pagamento foi confirmado com sucesso e você já está concorrendo ao prêmio.
+                </p>
+              </div>
+              <p className="text-lg text-gray-600 mb-8">
+                ✉️ Você receberá um email com os detalhes da sua contribuição e os números da rifa.
+              </p>
+            </div>
+            <Button onClick={() => navigate("/")} className="btn-green text-xl px-10 py-7 font-bold">
+              Voltar para Início
+            </Button>
+          </div>
+        </main>
+
+        <footer className="bg-gray-800 text-white py-8">
+          <div className="container mx-auto px-4 text-center">
+            <p className="text-gray-400">Políticas de Privacidade</p>
+          </div>
+        </footer>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              Pagamento via PIX
-            </h1>
-            <div className="bg-yellow-100 border border-yellow-300 rounded-lg p-4 mb-4">
-              <p className="font-bold text-yellow-800">
-                ⏱️ Tempo restante: {timeRemaining}
-              </p>
-            </div>
-          </div>
+    <div className="bg-background text-foreground min-h-screen">
+      {/* Header */}
+      <header className="bg-white shadow-sm py-4">
+        <div className="container mx-auto px-4 flex justify-center">
+          <img 
+            src="https://rifeioficial.com/wp-content/uploads/2025/09/Logo-4.png" 
+            alt="Rifa Oficial Logo" 
+            className="h-12"
+            data-testid="img-logo-payment"
+          />
+        </div>
+      </header>
 
-          {/* PIX QR Code */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-6">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">
-                Escaneie o QR Code
-              </h2>
-              <p className="text-gray-600">
-                Use o aplicativo do seu banco para escanear
-              </p>
-            </div>
-
-            {donation.pixQrCode && (
-              <div className="flex justify-center mb-6">
-                <div className="bg-white p-4 rounded-lg border-2 border-gray-200">
-                  <img
-                    src={donation.pixQrCode}
-                    alt="QR Code PIX"
-                    className="w-64 h-64"
-                    data-testid="img-pix-qrcode"
-                  />
-                </div>
-              </div>
-            )}
-
-            <div className="border-t pt-6">
-              <h3 className="text-lg font-bold text-gray-800 mb-3">
-                Ou copie o código PIX
-              </h3>
-              <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                <p className="text-sm font-mono break-all text-gray-700" data-testid="text-pix-code">
-                  {donation.pixCopyPaste}
+      <main className="bg-white py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                Finalize seu Pagamento PIX
+              </h1>
+              <div className="bg-yellow-100 border-2 border-yellow-400 rounded-xl p-5 mb-4">
+                <p className="text-lg font-bold text-yellow-800">
+                  ⏱️ Tempo restante para pagamento: <span className="text-2xl">{timeRemaining}</span>
                 </p>
               </div>
-              <Button
-                onClick={() => copyToClipboard(donation.pixCopyPaste || "")}
-                className="w-full btn-green"
-                data-testid="button-copy-pix"
-              >
-                Copiar Código PIX
-              </Button>
+              <p className="text-lg text-gray-700">
+                📱 Escaneie o QR Code ou copie o código PIX para pagar
+              </p>
             </div>
-          </div>
 
-          {/* Info */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-            <h3 className="font-bold text-blue-800 mb-2">ℹ️ Informações importantes:</h3>
-            <ul className="text-blue-700 space-y-2">
-              <li>• O pagamento é confirmado em até 2 minutos</li>
-              <li>• Após a confirmação, você receberá um email com seus números da rifa</li>
-              <li>• Esta página atualiza automaticamente quando o pagamento for confirmado</li>
-            </ul>
-          </div>
+            {/* PIX QR Code */}
+            <div className="bg-white rounded-xl shadow-xl border border-gray-200 p-8 mb-6">
+              <div className="text-center mb-6">
+                <h2 className="text-2xl font-bold text-gray-800 mb-3">
+                  Escaneie o QR Code
+                </h2>
+                <p className="text-gray-600 text-base">
+                  Abra o aplicativo do seu banco e escaneie o código abaixo
+                </p>
+              </div>
 
-          {/* Donation Details */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Detalhes da Contribuição</h3>
-            <div className="space-y-3">
-              <div className="flex justify-between">
-                <span className="text-gray-600">Valor:</span>
-                <span className="font-bold text-primary" data-testid="text-amount">
-                  R$ {parseFloat(donation.amount).toFixed(2)}
-                </span>
+              {donation.pixQrCode && (
+                <div className="flex justify-center mb-8">
+                  <div className="bg-white p-5 rounded-2xl border-4 border-[#056ADF]/20 shadow-lg">
+                    <img
+                      src={donation.pixQrCode}
+                      alt="QR Code PIX"
+                      className="w-64 h-64"
+                      data-testid="img-pix-qrcode"
+                    />
+                  </div>
+                </div>
+              )}
+
+              <div className="border-t-2 border-gray-200 pt-6">
+                <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">
+                  Ou copie o código PIX Copia e Cola
+                </h3>
+                <div className="bg-gray-50 rounded-lg p-4 mb-4 border-2 border-gray-200">
+                  <p className="text-sm font-mono break-all text-gray-700" data-testid="text-pix-code">
+                    {donation.pixCopyPaste}
+                  </p>
+                </div>
+                <Button
+                  onClick={() => copyToClipboard(donation.pixCopyPaste || "")}
+                  className="w-full btn-green text-lg py-6 font-bold"
+                  data-testid="button-copy-pix"
+                >
+                  📋 Copiar Código PIX
+                </Button>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Números da rifa:</span>
-                <span className="font-bold" data-testid="text-numbers">
-                  {donation.numberOfTickets}
-                </span>
+            </div>
+
+            {/* Info */}
+            <div className="bg-blue-50 border-2 border-blue-300 rounded-xl p-6 mb-6">
+              <h3 className="font-bold text-blue-800 mb-3 text-lg">ℹ️ Informações importantes:</h3>
+              <ul className="text-blue-700 space-y-2 text-base">
+                <li>• O pagamento é confirmado em até 2 minutos</li>
+                <li>• Após a confirmação, você receberá um email com seus números da rifa</li>
+                <li>• Esta página atualiza automaticamente quando o pagamento for confirmado</li>
+                <li>• Não feche esta página até a confirmação do pagamento</li>
+              </ul>
+            </div>
+
+            {/* Donation Details */}
+            <div className="bg-white rounded-xl shadow-xl border border-gray-200 p-6">
+              <h3 className="text-2xl font-bold text-gray-800 mb-5 text-center">Detalhes da Contribuição</h3>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-600 font-medium">Valor:</span>
+                  <span className="font-bold text-[#056ADF] text-xl" data-testid="text-amount">
+                    R$ {parseFloat(donation.amount).toFixed(2)}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-600 font-medium">Números da rifa:</span>
+                  <span className="font-bold text-lg" data-testid="text-numbers">
+                    {donation.numberOfTickets}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-600 font-medium">Nome:</span>
+                  <span className="font-semibold" data-testid="text-donor-name">
+                    {donation.donorName}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center py-2">
+                  <span className="text-gray-600 font-medium">Status:</span>
+                  <span className="px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full text-sm font-bold" data-testid="text-status">
+                    {donation.paymentStatus === "pending" ? "⏳ Aguardando pagamento" : donation.paymentStatus}
+                  </span>
+                </div>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Nome:</span>
-                <span className="font-semibold" data-testid="text-donor-name">
-                  {donation.donorName}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Status:</span>
-                <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-semibold" data-testid="text-status">
-                  {donation.paymentStatus === "pending" ? "Aguardando pagamento" : donation.paymentStatus}
-                </span>
-              </div>
+            </div>
+
+            <div className="text-center mt-8">
+              <button
+                onClick={() => navigate("/")}
+                className="text-[#056ADF] hover:underline text-lg font-medium"
+                data-testid="button-back-home"
+              >
+                ← Voltar para página inicial
+              </button>
             </div>
           </div>
         </div>
-      </div>
+      </main>
+
+      <footer className="bg-gray-800 text-white py-8 mt-12">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-gray-400">Políticas de Privacidade</p>
+        </div>
+      </footer>
     </div>
   );
 }
