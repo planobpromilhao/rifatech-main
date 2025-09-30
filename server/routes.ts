@@ -1,7 +1,8 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertDonationSchema, insertCampaignSchema } from "@shared/schema";
+import { insertDonationSchema, insertCampaignSchema, checkoutSchema } from "@shared/schema";
+import { hyperCashService } from "./hypercash";
 
 // Seed the database with the Dudu campaign
 async function seedDatabase() {
@@ -66,25 +67,84 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Donation endpoints
   app.post('/api/donations', async (req, res) => {
     try {
-      const validatedData = insertDonationSchema.parse(req.body);
+      const checkoutData = checkoutSchema.parse(req.body);
       
-      // Create donation
-      const donation = await storage.createDonation(validatedData);
+      // Get the active campaign (Dudu campaign)
+      const campaigns = await storage.getActiveCampaigns();
+      if (campaigns.length === 0) {
+        return res.status(404).json({ error: 'No active campaign found' });
+      }
       
-      // Generate raffle numbers
-      const raffleNumbers = await storage.generateRaffleNumbers(
-        donation.id, 
-        donation.campaignId, 
-        donation.numberOfTickets
-      );
+      const campaign = campaigns[0];
+      const amount = parseFloat(checkoutData.amount);
       
-      res.json({
-        donation,
-        raffleNumbers: raffleNumbers.map(r => r.numberValue)
+      // Create donation record
+      const donation = await storage.createDonation({
+        campaignId: campaign.id,
+        donorName: checkoutData.donorName,
+        donorEmail: checkoutData.donorEmail,
+        donorPhone: checkoutData.donorPhone,
+        donorCpf: checkoutData.donorCpf,
+        amount: amount.toString(),
+        numberOfTickets: checkoutData.numberOfTickets,
+        paymentStatus: 'pending'
       });
+      
+      // Create PIX charge with HyperCash
+      try {
+        const pixCharge = await hyperCashService.createPixCharge(
+          amount,
+          donation.id,
+          checkoutData.donorName
+        );
+        
+        // Update donation with PIX info
+        await storage.updateDonationPix(donation.id, {
+          pixQrCode: pixCharge.qrcode,
+          pixCopyPaste: pixCharge.brcode,
+          pixExpiresAt: new Date(pixCharge.expiresAt),
+          paymentId: pixCharge.transactionId
+        });
+        
+        // Return updated donation
+        const updatedDonation = await storage.getDonation(donation.id);
+        res.json(updatedDonation);
+      } catch (pixError) {
+        console.error('Error creating PIX charge:', pixError);
+        // Return donation without PIX info if HyperCash fails
+        res.json(donation);
+      }
     } catch (error) {
       console.error('Error creating donation:', error);
       res.status(500).json({ error: 'Failed to create donation' });
+    }
+  });
+
+  // Get single donation by ID
+  app.get('/api/donations/:id', async (req, res) => {
+    try {
+      const donation = await storage.getDonation(req.params.id);
+      if (!donation) {
+        return res.status(404).json({ error: 'Donation not found' });
+      }
+      
+      // Check payment status if there's a paymentId
+      if (donation.paymentId && donation.paymentStatus === 'pending') {
+        try {
+          const paymentStatus = await hyperCashService.checkPaymentStatus(donation.paymentId);
+          if (paymentStatus.paid) {
+            await storage.updateDonationStatus(donation.id, 'approved', donation.paymentId);
+            await storage.updateCampaignStats(donation.campaignId);
+            donation.paymentStatus = 'approved';
+          }
+        } catch (error) {
+          console.error('Error checking payment status:', error);
+        }
+      }
+      
+      res.json(donation);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch donation' });
     }
   });
 

@@ -29,8 +29,10 @@ export interface IStorage {
   
   // Donation methods
   createDonation(donation: InsertDonation): Promise<Donation>;
+  getDonation(donationId: string): Promise<Donation | undefined>;
   getDonationsByCampaign(campaignId: string): Promise<Donation[]>;
   updateDonationStatus(donationId: string, status: string, paymentId?: string): Promise<void>;
+  updateDonationPix(donationId: string, pixData: { pixQrCode: string; pixCopyPaste: string; pixExpiresAt: Date; paymentId: string }): Promise<void>;
   
   // Raffle number methods
   generateRaffleNumbers(donationId: string, campaignId: string, count: number): Promise<RaffleNumber[]>;
@@ -109,6 +111,11 @@ export class DatabaseStorage implements IStorage {
     return newDonation;
   }
 
+  async getDonation(donationId: string): Promise<Donation | undefined> {
+    const [donation] = await db.select().from(donations).where(eq(donations.id, donationId));
+    return donation || undefined;
+  }
+
   async getDonationsByCampaign(campaignId: string): Promise<Donation[]> {
     return await db
       .select()
@@ -123,6 +130,19 @@ export class DatabaseStorage implements IStorage {
       .set({
         paymentStatus: status,
         paymentId: paymentId,
+        updatedAt: new Date()
+      })
+      .where(eq(donations.id, donationId));
+  }
+
+  async updateDonationPix(donationId: string, pixData: { pixQrCode: string; pixCopyPaste: string; pixExpiresAt: Date; paymentId: string }): Promise<void> {
+    await db
+      .update(donations)
+      .set({
+        pixQrCode: pixData.pixQrCode,
+        pixCopyPaste: pixData.pixCopyPaste,
+        pixExpiresAt: pixData.pixExpiresAt,
+        paymentId: pixData.paymentId,
         updatedAt: new Date()
       })
       .where(eq(donations.id, donationId));
