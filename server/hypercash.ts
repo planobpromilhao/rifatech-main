@@ -14,7 +14,7 @@ interface HyperCashPixResponse {
 
 export class HyperCashService {
   private apiKey: string;
-  private baseUrl = "https://api.hypercash.app/v1";
+  private baseUrl = "https://api.hypercashbrasil.com.br/api/user";
 
   constructor() {
     this.apiKey = process.env.HYPERCASH_API_KEY || "";
@@ -36,7 +36,7 @@ export class HyperCashService {
     };
 
     try {
-      const response = await fetch(`${this.baseUrl}/pix/charge`, {
+      const response = await fetch(`${this.baseUrl}/transactions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export class HyperCashService {
     }
 
     try {
-      const response = await fetch(`${this.baseUrl}/pix/charge/${transactionId}`, {
+      const response = await fetch(`${this.baseUrl}/transactions/${transactionId}`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${this.apiKey}`,
