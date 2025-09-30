@@ -86,7 +86,7 @@ export function PricingCards() {
     return (
       <div className={cardClasses}>
         {option.isPopular && (
-          <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-secondary text-secondary-foreground px-4 py-1 rounded-full text-sm font-bold">
+          <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-secondary text-secondary-foreground px-3 py-0.5 rounded-full text-xs font-bold">
             MAIS VENDIDO!
           </div>
         )}
