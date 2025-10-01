@@ -77,7 +77,7 @@ export function PricingCards() {
     const buttonClasses = "block btn-green px-4 py-3 rounded-lg font-bold transition-all text-[15px]";
 
     return (
-      <div className={cardClasses}>
+      <div className={`${cardClasses} flex flex-col`}>
         {option.isPopular && (
           <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-secondary text-secondary-foreground px-3 py-0.5 rounded-full text-xs font-bold">
             MAIS VENDIDO!
@@ -89,7 +89,7 @@ export function PricingCards() {
         <div className={`${isLarge ? 'text-lg' : 'text-lg'} font-semibold mb-2`}>
           {option.numbers} números
         </div>
-        <div className={`${isLarge ? 'text-sm' : 'text-sm'} text-gray-600 mb-4`}>
+        <div className={`${isLarge ? 'text-sm' : 'text-sm'} text-gray-600 mb-4 flex-grow`}>
           R$ {option.pricePerNumber.toFixed(2)} por número
         </div>
         <button 
