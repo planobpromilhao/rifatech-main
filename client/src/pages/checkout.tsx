@@ -102,16 +102,32 @@ export default function CheckoutPage() {
               <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
                 Finalizar Contribuição
               </h1>
-              <div className="bg-[#056ADF]/10 border-2 border-[#056ADF]/30 rounded-xl p-6 mb-4">
-                <p className="text-3xl font-extrabold text-[#056ADF] mb-2">
-                  R$ {price.toFixed(2)}
-                </p>
-                <p className="text-lg text-gray-700 font-medium">
+              
+              {/* Resumo da Compra */}
+              <div className="bg-gradient-to-br from-[#056ADF]/10 to-[#00D12D]/10 border-2 border-[#056ADF]/30 rounded-xl p-6 mb-4 shadow-lg">
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <span className="text-4xl">🎫</span>
+                  <p className="text-4xl font-extrabold text-[#056ADF]">
+                    R$ {price.toFixed(2)}
+                  </p>
+                </div>
+                <p className="text-xl text-gray-800 font-bold mb-3">
                   {numbers} {numbers === 1 ? "número" : "números"} da rifa
                 </p>
+                <div className="bg-white rounded-lg p-4 border-2 border-[#00D12D]">
+                  <p className="text-lg font-bold text-gray-800 mb-2">
+                    🎁 Concorra a prêmios incríveis:
+                  </p>
+                  <div className="space-y-1 text-base text-gray-700">
+                    <p>🚗 <strong>Chevrolet Onix 0km</strong> no valor de R$ 90.000</p>
+                    <p>💰 <strong>PIX de R$ 15.000</strong> em dinheiro</p>
+                    <p>🏆 E muito mais prêmios!</p>
+                  </div>
+                </div>
               </div>
-              <p className="text-lg text-gray-700 mb-2">
-                🎯 Você está a poucos passos de ajudar o Dudu!
+              
+              <p className="text-lg text-gray-700 mb-2 font-semibold">
+                🎯 Você está a poucos passos de ajudar o Dudu e concorrer aos prêmios!
               </p>
             </div>
 
