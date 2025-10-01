@@ -74,7 +74,7 @@ export function PricingCards() {
       ? "bg-white rounded-xl shadow-lg p-6 text-center border-2 border-accent hover:border-accent transition-all"
       : "bg-white rounded-xl shadow-lg p-6 text-center border-2 border-transparent hover:border-primary transition-all";
 
-    const buttonClasses = "block btn-green px-4 py-3 rounded-lg font-bold transition-all";
+    const buttonClasses = "block btn-green px-4 py-3 rounded-lg font-bold transition-all text-[15px]";
 
     return (
       <div className={cardClasses}>
