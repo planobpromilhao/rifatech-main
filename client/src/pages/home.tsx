@@ -213,9 +213,9 @@ export default function Home() {
                 <button 
                   onClick={scrollToPayment}
                   className="inline-block btn-green px-8 py-4 rounded-lg text-xl font-bold transition-all"
-                  data-testid="button-help-helena"
+                  data-testid="button-help-dudu"
                 >
-                  POR FAVOR AJUDE A HELENA!
+                  POR FAVOR AJUDE O DUDU!
                 </button>
               </div>
             </div>
@@ -286,9 +286,9 @@ export default function Home() {
                 <button 
                   onClick={scrollToPayment}
                   className="inline-block btn-green px-8 py-4 rounded-lg text-xl font-bold transition-all"
-                  data-testid="button-help-helena-faq"
+                  data-testid="button-help-dudu-faq"
                 >
-                  POR FAVOR AJUDE A HELENA!
+                  POR FAVOR AJUDE O DUDU!
                 </button>
               </div>
             </div>
