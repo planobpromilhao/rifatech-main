@@ -210,7 +210,7 @@ export default function Home() {
                 <img 
                   src="https://curaparadudu.com/wp-content/uploads/2025/09/Fotos-1-1-1.jpg" 
                   alt="Cobertura da mídia" 
-                  className="w-full h-48 object-cover"
+                  className="w-full h-80 object-contain bg-white"
                   data-testid="img-media-coverage-1"
                 />
               </div>
@@ -218,7 +218,7 @@ export default function Home() {
                 <img 
                   src="https://curaparadudu.com/wp-content/uploads/2025/09/05-img-1.jpg" 
                   alt="Cobertura da mídia" 
-                  className="w-full h-48 object-cover"
+                  className="w-full h-80 object-contain bg-white"
                   data-testid="img-media-coverage-2"
                 />
               </div>
@@ -226,7 +226,7 @@ export default function Home() {
                 <img 
                   src="https://curaparadudu.com/wp-content/uploads/2025/09/08-img-1.jpg" 
                   alt="Cobertura da mídia" 
-                  className="w-full h-48 object-cover"
+                  className="w-full h-80 object-contain bg-white"
                   data-testid="img-media-coverage-3"
                 />
               </div>
@@ -234,7 +234,7 @@ export default function Home() {
                 <img 
                   src="https://curaparadudu.com/wp-content/uploads/2025/09/04-img-1.jpg" 
                   alt="Cobertura da mídia" 
-                  className="w-full h-48 object-cover"
+                  className="w-full h-80 object-contain bg-white"
                   data-testid="img-media-coverage-4"
                 />
               </div>
