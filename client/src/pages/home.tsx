@@ -208,7 +208,7 @@ export default function Home() {
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                 <img 
-                  src="https://rifeioficial.com/wp-content/uploads/2025/09/Ft-2.png" 
+                  src="https://curaparadudu.com/wp-content/uploads/2025/09/Fotos-1-1-1.jpg" 
                   alt="Cobertura da mídia" 
                   className="w-full h-48 object-cover"
                   data-testid="img-media-coverage-1"
@@ -216,7 +216,7 @@ export default function Home() {
               </div>
               <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                 <img 
-                  src="https://rifeioficial.com/wp-content/uploads/2025/09/08-img-1.jpg" 
+                  src="https://curaparadudu.com/wp-content/uploads/2025/09/05-img-1.jpg" 
                   alt="Cobertura da mídia" 
                   className="w-full h-48 object-cover"
                   data-testid="img-media-coverage-2"
@@ -224,7 +224,7 @@ export default function Home() {
               </div>
               <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                 <img 
-                  src="https://rifeioficial.com/wp-content/uploads/2025/09/05-img-1.jpg" 
+                  src="https://curaparadudu.com/wp-content/uploads/2025/09/08-img-1.jpg" 
                   alt="Cobertura da mídia" 
                   className="w-full h-48 object-cover"
                   data-testid="img-media-coverage-3"
@@ -232,7 +232,7 @@ export default function Home() {
               </div>
               <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                 <img 
-                  src="https://rifeioficial.com/wp-content/uploads/2025/09/04-img-1.jpg" 
+                  src="https://curaparadudu.com/wp-content/uploads/2025/09/04-img-1.jpg" 
                   alt="Cobertura da mídia" 
                   className="w-full h-48 object-cover"
                   data-testid="img-media-coverage-4"
