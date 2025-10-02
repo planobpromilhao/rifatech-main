@@ -206,38 +206,30 @@ export default function Home() {
             </div>
 
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                <img 
-                  src="https://curaparadudu.com/wp-content/uploads/2025/09/Fotos-1-1-1.jpg" 
-                  alt="Cobertura da mídia" 
-                  className="w-full h-80 object-contain bg-white"
-                  data-testid="img-media-coverage-1"
-                />
-              </div>
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                <img 
-                  src="https://curaparadudu.com/wp-content/uploads/2025/09/05-img-1.jpg" 
-                  alt="Cobertura da mídia" 
-                  className="w-full h-80 object-contain bg-white"
-                  data-testid="img-media-coverage-2"
-                />
-              </div>
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                <img 
-                  src="https://curaparadudu.com/wp-content/uploads/2025/09/08-img-1.jpg" 
-                  alt="Cobertura da mídia" 
-                  className="w-full h-80 object-contain bg-white"
-                  data-testid="img-media-coverage-3"
-                />
-              </div>
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                <img 
-                  src="https://curaparadudu.com/wp-content/uploads/2025/09/04-img-1.jpg" 
-                  alt="Cobertura da mídia" 
-                  className="w-full h-80 object-contain bg-white"
-                  data-testid="img-media-coverage-4"
-                />
-              </div>
+              <img 
+                src="https://curaparadudu.com/wp-content/uploads/2025/09/Fotos-1-1-1.jpg" 
+                alt="Cobertura da mídia" 
+                className="w-full h-auto"
+                data-testid="img-media-coverage-1"
+              />
+              <img 
+                src="https://curaparadudu.com/wp-content/uploads/2025/09/05-img-1.jpg" 
+                alt="Cobertura da mídia" 
+                className="w-full h-auto"
+                data-testid="img-media-coverage-2"
+              />
+              <img 
+                src="https://curaparadudu.com/wp-content/uploads/2025/09/08-img-1.jpg" 
+                alt="Cobertura da mídia" 
+                className="w-full h-auto"
+                data-testid="img-media-coverage-3"
+              />
+              <img 
+                src="https://curaparadudu.com/wp-content/uploads/2025/09/04-img-1.jpg" 
+                alt="Cobertura da mídia" 
+                className="w-full h-auto"
+                data-testid="img-media-coverage-4"
+              />
             </div>
           </div>
         </section>
