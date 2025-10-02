@@ -108,8 +108,11 @@ export default function CheckoutPage() {
                 <p className="text-3xl font-extrabold text-[#056ADF] mb-2 text-center">
                   R$ {price.toFixed(2)}
                 </p>
-                <p className="text-lg text-gray-700 font-medium text-center">
+                <p className="text-lg text-gray-700 font-medium text-center mb-2">
                   {numbers} {numbers === 1 ? "número da rifa" : "números da rifa"}
+                </p>
+                <p className="text-base text-gray-600 font-semibold text-center">
+                  Onix 0KM ou R$ 100.000,00
                 </p>
               </div>
               <p className="text-lg text-gray-700 mb-2 text-center">
