@@ -1,0 +1,9 @@
+*.md
+.replit
+replit.nix
+.git
+.gitignore
+client/src
+server/*.ts
+*.test.js
+*.spec.js
