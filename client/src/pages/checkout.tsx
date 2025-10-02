@@ -104,40 +104,17 @@ export default function CheckoutPage() {
               </h1>
               
               {/* Resumo da Compra */}
-              <div className="bg-white border-2 border-[#056ADF] rounded-xl p-6 mb-6 shadow-lg">
-                <div className="text-center mb-4">
-                  <p className="text-sm font-semibold text-gray-600 uppercase mb-3">Resumo da Contribuição</p>
-                  <div className="mb-4">
-                    <p className="text-4xl font-bold text-[#056ADF] mb-2">
-                      R$ {price.toFixed(2)}
-                    </p>
-                    <p className="text-lg text-gray-700 font-semibold">
-                      {numbers} {numbers === 1 ? "número da rifa" : "números da rifa"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="border-t-2 border-gray-200 pt-4">
-                  <p className="text-center text-lg font-bold text-gray-800 mb-3">
-                    🎁 Concorra ao prêmio:
-                  </p>
-                  <div className="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-4 text-center">
-                    <p className="text-xl font-bold text-gray-800">
-                      🚗 Chevrolet Onix 0KM
-                    </p>
-                    <p className="text-lg text-gray-600 my-2">OU</p>
-                    <p className="text-xl font-bold text-[#00D12D]">
-                      💰 R$ 100.000,00 em dinheiro
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-4 text-center">
-                  <p className="text-base text-gray-700 font-semibold">
-                    ❤️ Ajude o Dudu e concorra!
-                  </p>
-                </div>
+              <div className="bg-[#056ADF]/10 border-2 border-[#056ADF]/30 rounded-xl p-6 mb-4">
+                <p className="text-3xl font-extrabold text-[#056ADF] mb-2 text-center">
+                  R$ {price.toFixed(2)}
+                </p>
+                <p className="text-lg text-gray-700 font-medium text-center">
+                  {numbers} {numbers === 1 ? "número da rifa" : "números da rifa"}
+                </p>
               </div>
+              <p className="text-lg text-gray-700 mb-2 text-center">
+                🎯 Você está a poucos passos de ajudar o Dudu!
+              </p>
             </div>
 
             {/* Form Card */}
