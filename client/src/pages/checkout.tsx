@@ -104,31 +104,66 @@ export default function CheckoutPage() {
               </h1>
               
               {/* Resumo da Compra */}
-              <div className="bg-gradient-to-br from-[#056ADF]/10 to-[#00D12D]/10 border-2 border-[#056ADF]/30 rounded-xl p-6 mb-4 shadow-lg">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <span className="text-4xl">🎫</span>
-                  <p className="text-4xl font-extrabold text-[#056ADF]">
-                    R$ {price.toFixed(2)}
-                  </p>
+              <div className="bg-white border-2 border-[#056ADF] rounded-2xl overflow-hidden shadow-xl mb-6">
+                {/* Header do Card */}
+                <div className="bg-gradient-to-r from-[#056ADF] to-[#0052b8] text-white px-6 py-4">
+                  <p className="text-sm font-semibold uppercase tracking-wide">Resumo da sua contribuição</p>
                 </div>
-                <p className="text-xl text-gray-800 font-bold mb-3">
-                  {numbers} {numbers === 1 ? "número" : "números"} da rifa
-                </p>
-                <div className="bg-white rounded-lg p-4 border-2 border-[#00D12D]">
-                  <p className="text-lg font-bold text-gray-800 mb-2">
-                    🎁 Concorra a prêmios incríveis:
-                  </p>
-                  <div className="space-y-1 text-base text-gray-700">
-                    <p>🚗 <strong>Chevrolet Onix 0km</strong> no valor de R$ 90.000</p>
-                    <p>💰 <strong>PIX de R$ 15.000</strong> em dinheiro</p>
-                    <p>🏆 E muito mais prêmios!</p>
+                
+                {/* Valor e Números */}
+                <div className="p-6 bg-gradient-to-br from-blue-50 to-green-50">
+                  <div className="flex items-baseline justify-center gap-3 mb-2">
+                    <span className="text-5xl">🎫</span>
+                    <div className="text-center">
+                      <p className="text-5xl font-black text-[#056ADF]">
+                        R$ {price.toFixed(2)}
+                      </p>
+                      <p className="text-lg text-gray-600 font-semibold mt-1">
+                        {numbers} {numbers === 1 ? "número da rifa" : "números da rifa"}
+                      </p>
+                    </div>
                   </div>
                 </div>
+
+                {/* Prêmios */}
+                <div className="px-6 pb-6">
+                  <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-300 rounded-xl p-5">
+                    <div className="flex items-center justify-center gap-2 mb-3">
+                      <span className="text-2xl">🎁</span>
+                      <h3 className="text-xl font-bold text-gray-800">
+                        Você concorre a:
+                      </h3>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 bg-white rounded-lg p-3">
+                        <span className="text-2xl">🚗</span>
+                        <p className="text-base font-semibold text-gray-800">
+                          Chevrolet Onix 0km <span className="text-[#056ADF]">(R$ 90.000)</span>
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2 bg-white rounded-lg p-3">
+                        <span className="text-2xl">💰</span>
+                        <p className="text-base font-semibold text-gray-800">
+                          PIX de <span className="text-[#00D12D]">R$ 15.000</span> em dinheiro
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2 bg-white rounded-lg p-3">
+                        <span className="text-2xl">🏆</span>
+                        <p className="text-base font-semibold text-gray-800">
+                          E muito mais prêmios surpresa!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mensagem Final */}
+                <div className="bg-[#00D12D] text-white px-6 py-4 text-center">
+                  <p className="text-lg font-bold">
+                    ❤️ Ajude o Dudu e concorra aos prêmios!
+                  </p>
+                </div>
               </div>
-              
-              <p className="text-lg text-gray-700 mb-2 font-semibold">
-                🎯 Você está a poucos passos de ajudar o Dudu e concorrer aos prêmios!
-              </p>
             </div>
 
             {/* Form Card */}
