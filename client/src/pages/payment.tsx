@@ -87,7 +87,7 @@ export default function PaymentPage() {
         <header className="bg-white shadow-sm py-4">
           <div className="container mx-auto px-4 flex justify-center">
             <img 
-              src="https://rifeioficial.com/wp-content/uploads/2025/09/Logo-4.png" 
+              src="https://curaparadudu.com/wp-content/uploads/2025/09/Logo-4.png" 
               alt="Rifa Oficial Logo" 
               className="h-12"
               data-testid="img-logo-success"
