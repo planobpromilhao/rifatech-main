@@ -154,6 +154,22 @@ export default function Home() {
                     POR FAVOR SALVE O DUDU!
                   </button>
                 </div>
+
+                {/* Seta para baixo */}
+                <div className="flex items-center justify-center my-8" data-testid="arrow-divider-2">
+                  <div className="flex-grow border-t border-gray-300"></div>
+                  <div className="mx-4">
+                    <svg 
+                      className="w-8 h-8 text-gray-400" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                  <div className="flex-grow border-t border-gray-300"></div>
+                </div>
               </div>
             </div>
           </div>
